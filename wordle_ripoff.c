@@ -117,11 +117,11 @@ int main()
 
     } // End do
     // While attempts haven't ran out and player haven't won the game
-    while ((attempts > 0) && (won != 6));
+    while ((attempts > 0) && (won != SIZE));
 
 
     // If statement to print player lost the game after running out of attempts
-    if ((attempts == 0) && (won != 6))
+    if ((attempts == 0) && (won != SIZE))
     {
         printf("\n\nGame over, you have ran out of attempts. The correct word was 'coding'");
 
@@ -171,3 +171,5 @@ int main()
     return 0;       // End program
 
 } // End main()
+
+
