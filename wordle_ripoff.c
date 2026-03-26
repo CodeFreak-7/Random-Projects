@@ -1,6 +1,6 @@
 /*
     Description: Cheap ass wordle. Please work.
-                 Does it work (y/n)? 
+                 Does it work (y/n)? y
     
     Author: CodeFreak-7
 
@@ -11,15 +11,14 @@
 
 #include <stdio.h>
 
+
 // Symbolic names
 #define SIZE 6
 #define CHANCES 7
 
 
 // Function signatures
-// ...
-// ...
-
+//void start_menu(void);
 
 
 // Function main()
@@ -35,6 +34,13 @@ int main()
     int i;
 
 
+    // Calling start_menu()
+    // A menu that gets displayed when the program starts running
+    // Displays the rules and how the game works
+    //
+    //start_menu();
+
+
     // Do while loop to keep reading guesses
     do
     {
@@ -43,7 +49,7 @@ int main()
 
 
         // Prompt player for a word
-        printf("\n\nGuess a letter\n");
+        printf("\nGuess a letter\n");
         scanf(" %c", &guess);               // Added space before %c to ignore white space characters
 
 
@@ -74,19 +80,21 @@ int main()
             redacted[i - 1] = guess; // Place guess into the right element in redacted[]
 
             // For loop to print redacted[]
-            printf("\nCorrect guess. It is located here: ");
+            printf("Correct guess. It is located here: ");
             for (i = 0; i < SIZE; i++)
             {
                 printf("%c", redacted[i]);
 
             } // End for
+            
+            printf("\n"); // Printing new line for readability
 
         } // End if
 
 
         else // Else print guess is not in word[]
         {
-            printf("\n%c is not in the word.", guess);
+            printf("%c is not in the word.\n", guess);
             attempts--; // Reduce the attempts by 1 after every wrong guess
 
         } // End else
