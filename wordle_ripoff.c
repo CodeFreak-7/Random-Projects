@@ -30,64 +30,101 @@ int main()
     char redacted[SIZE] = {'_', '_', '_', '_', '_', '_'};
     char guess;
     int right_guess = 0;
-    int i = 0;
-
-    
-    
-
+    int attempts = CHANCES;
+    int won;
+    int i;
 
 
-    // Prompt player for a word
-    printf("Guess a letter\n");
-    scanf("%c", &guess);
-
-
-    // Do while loop with nested if to check if guess is in word[]
+    // Do while loop to keep reading guesses
     do
     {
-        if (guess == word[i])
+        // Set won to 0 to indicate player has not yet won the game
+        won = 0;
+
+
+        // Prompt player for a word
+        printf("\n\nGuess a letter\n");
+        scanf(" %c", &guess);               // Added space before %c to ignore white space characters
+
+
+        // Initialise i
+        i = 0;
+
+
+        // Do while loop with nested if to check if guess is in word[]
+        do
         {
-            // change right_guess to 1
-            right_guess = 1;
+            if (guess == word[i])
+            {
+                // change right_guess to 1
+                right_guess = 1;
+
+            } // End if
+
+            i++;        // Increment i
+
+        } // End do 
+        // Keep running the loop while i is less than SIZE and right_guess is 0
+        while ((i < SIZE) && (right_guess == 0));
+
+
+        // If statement to check if player guessed right
+        if (right_guess == 1)
+        {
+            redacted[i - 1] = guess; // Place guess into the right element in redacted[]
+
+            // For loop to print redacted[]
+            printf("\nCorrect guess. It is located here: ");
+            for (i = 0; i < SIZE; i++)
+            {
+                printf("%c", redacted[i]);
+
+            } // End for
 
         } // End if
 
-        i++; // Increment i
 
-    } // End do 
-    // Keep running the loop while i is less than SIZE and right_guess is 0
-    while ((i < SIZE) && (right_guess == 0));
+        else // Else print guess is not in word[]
+        {
+            printf("\n%c is not in the word.", guess);
+            attempts--; // Reduce the attempts by 1 after every wrong guess
+
+        } // End else
 
 
-    // If statement to check if player guessed right
-    if (right_guess == 1)
-    {
-        redacted[i - 1] = guess; // Place guess into the right element in redacted[]
+        // Change right_guess back to 0 for the loop to run again
+        right_guess = 0;
+    
 
-        // For loop to print redacted[]
-        printf("\n\nCorrect guess. It is located here: ");
+        // For loop with nested if to check if the elements of redacted[] matches with elements of word[]
         for (i = 0; i < SIZE; i++)
         {
-            printf("%c", redacted[i]);
+            if (redacted[i] == word[i])
+            {
+                won++;      // Increment won
+
+            } // End if
 
         } // End for
+
+    } // End do
+    // While attempts haven't ran out and player haven't won the game
+    while ((attempts > 0) && (won != 6));
+
+
+    // If statement to print player lost the game after running out of attempts
+    if ((attempts == 0) && (won != 6))
+    {
+        printf("\n\nGame over, you have ran out of attempts. The correct word was 'coding'");
 
     } // End if
 
 
-    else // Else print guess is not in word[]
+    else // Else print player won the game
     {
-        printf("\n\n%c is not in the word.", guess);
+        printf("\n\nYou guessed the word correctly");
 
     } // End else
-
-
-    // Change right_guess back to 0 for the loop to run again
-    right_guess = 0;
-    
-
-
-
     
     
 
@@ -123,5 +160,6 @@ int main()
 
 
 
-    return 0;
-}
+    return 0;       // End program
+
+} // End main()
