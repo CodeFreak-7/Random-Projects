@@ -1,6 +1,5 @@
 /*
-    Description: Cheap ass wordle. Please work.
-                 Does it work (y/n)? y
+    Description: Hangman game. Guess the word by letters.
     
     Author: CodeFreak-7
 
@@ -94,8 +93,8 @@ int main()
 
         else // Else print guess is not in word[]
         {
-            printf("%c is not in the word.\n", guess);
             attempts--; // Reduce the attempts by 1 after every wrong guess
+            printf("%c is not in the word. You have %d attempts remaining.\n", guess, attempts);
 
         } // End else
 
