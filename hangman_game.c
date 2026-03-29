@@ -9,6 +9,7 @@
 
 
 #include <stdio.h>
+#include <stdlib.h>
 
 
 // Symbolic names
@@ -17,7 +18,7 @@
 
 
 // Function signatures
-//void start_menu(void);
+void start_menu(void);
 
 
 // Function main()
@@ -30,14 +31,14 @@ int main()
     int right_guess = 0;
     int attempts = CHANCES;
     int won;
-    int i, j;
+    int i;
 
 
     // Calling start_menu()
     // A menu that gets displayed when the program starts running
     // Displays the rules and how the game works
     //
-    //start_menu();
+    start_menu();
 
 
     // Do while loop to keep reading guesses
@@ -181,3 +182,26 @@ int main()
 } // End main()
 
 
+
+// Function start_menu()
+// This function displays a start menu for the game with rules on how to play
+//
+void start_menu(void)
+{
+    char ok;
+
+    printf("Welcome to Hangman\n\n\n");
+    printf("RULES:\n\n");
+    printf("1. WIN by guessing all letters of the word.\n");
+    printf("2. You can only guess one letter at a time.\n");
+    printf("3. If a letter occurs multiple times in a word, one guess is enough to reveal them.\n");
+    printf("4. You have 7 chances to make mistakes.\n");
+    printf("5. If you guess the wrong letter 7 times you LOSE.\n");
+    printf("6. Enjoy playing.\n");
+
+    printf("\n\nPress ENTER key to start playing.\n");
+    scanf("%c", ok);
+
+    system("cls");      // Clear console (Windows)
+
+} // End start_menu()
