@@ -30,7 +30,7 @@ int main()
     int right_guess = 0;
     int attempts = CHANCES;
     int won;
-    int i;
+    int i, j;
 
 
     // Calling start_menu()
@@ -56,7 +56,7 @@ int main()
         i = 0;
 
 
-        // Do while loop with nested if to check if guess is in word[]
+        // Do while loop with nested if to check if guess appears atleast once in the word
         do
         {
             if (guess == word[i])
@@ -76,7 +76,16 @@ int main()
         // If statement to check if player guessed right
         if (right_guess == 1)
         {
-            redacted[i - 1] = guess; // Place guess into the right element in redacted[]
+            // For loop to place guess into the right elements of redacted[]
+            for (i = 0; i < SIZE; i++)
+            {
+                if (guess == word[i])
+                {
+                    redacted[i] = guess;
+
+                } // End if
+
+            } // End for
 
             // For loop to print redacted[]
             printf("Correct guess. It is located here: ");
